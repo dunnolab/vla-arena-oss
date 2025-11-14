@@ -56,8 +56,48 @@ curl -LsSf https://hf.co/cli/install.sh | bash
 ```shell
 # Download model from 
 hf download dunnolab/<model-name> 
+# 
 ```
 
 ### Run finetuning
 
-### Run evaluatio on Libero RU/ENG
+### Run evaluation on LIBERO RU/ENG
+We provide the following LIBERO-RU tasks:
+- `ru_libero_spatial` - 10 tasks of `libero_saptial` (Russian)
+- `ru_libero_object` - 10 tasks of `libero_object` (Russian)
+- `ru_libero_goal` - 10 tasks `libero_goal` (Russian)
+- `ru_libero_10` - 10 tasks of `libero_10` (Russian)
+
+If you're using LIBERO as a third-party dependency (e.g., in the OpenPI project), you'll need to copy the Russian task files into your `third_party/libero` directory. Before that please refer to the installation instruction of the original [openpi repository](https://github.com/Physical-Intelligence/openpi/tree/main/examples/libero)
+
+The bddl files define the task specifications and init files contain the initial environment states in Russian. python files configure benchmark suite for compatibility of original libero repo with Russian tasks. Copy them from your appropriate directory to your third-party LIBERO installation:
+
+```bash
+cp -r $VLA_ARENA_OSS_PWD/libero-ru/bddl_files/ru_libero_* third_party/libero/libero/libero/bddl_files/
+
+cp -r $VLA_ARENA_OSS_PWD/libero-ru/init_files/ru_libero_* third_party/libero/libero/libero/init_files/
+
+cp $VLA_ARENA_OSS_PWD/libero-ru/benchmark/libero_suite_task_map.py third_party/libero/libero/libero/benchmark/libero_suite_task_map.py
+
+cp $VLA_ARENA_OSS_PWD/libero-ru/benchmark/__init__.py third_party/libero/libero/libero/benchmark/__init__.py
+
+cp $VLA_ARENA_OSS_PWD/libero-ru/examples/main.py examples/libero/main.py
+```
+
+Then you can follow the original setup of openpi LIBERO installation:
+```bash
+...
+'steps from the original openpi libero installation'
+...
+
+uv pip install -e third_party/libero
+```
+
+Then, as an example, you can use such a script for LIBERO-RU/EN evaluation
+```bash
+# ru_libero_spatial ru_libero_object ru_libero_goal ru_libero_10
+python examples/libero/main.py \
+    --args.num_trials_per_task 50 \
+    --args.task-suite-name ru_libero_spatial \
+    --args.port 8000
+```
