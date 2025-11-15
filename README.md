@@ -1,10 +1,14 @@
 # Tools for RU-VLA
 
 ## Avalilable Datasets 
+
 ### Combined Le-Robot Datasets
 
+We present a consolidated community dataset for Le-Robot embodiment that integrates 598 open-source community datasets into a single unified corpus. The dataset comprises 22,709 episodes and approximately 9.4 million frames spanning 563 distinct tasks. Two versions of the dataset are available: one with task annotations in [English](https://huggingface.co/datasets/dunnolab/so-combined-eng) and another with task annotations translated into [Russian](https://huggingface.co/datasets/dunnolab/so-combined-ru). 
 
 ### Libero-RU Dataset
+
+We also open-source a translated to Russian language [version](https://huggingface.co/datasets/dunnolab/libero-ru) of Physical Intelligence Libero [dataset](https://huggingface.co/datasets/physical-intelligence/libero).
 
 ## Setup Training On Le-Robot Datasets
 ### Clone this repository
