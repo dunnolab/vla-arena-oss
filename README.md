@@ -46,8 +46,8 @@ cp -r ./src/openpi/models_pytorch/transformers_replace/* .venv/lib/python3.11/si
 ## Using our models
 
 Choose `<model-name>` depending on your purposes:
-- `pi05-libero-ru-en` - pi05 checkpoint from Physical-Intelligence finetuned on both Libero-EN and [Libero-RU](TODO: insert link) Datasets.
-- `pi05-pnp-ru` - pi05 checkpoint from Physical-Intelligence finetuned on pick-and-place dataset for SO101 Robot with Russian task annotations.
+- `pi05-libero-ru-en` - pi05 checkpoint from Physical-Intelligence finetuned on both [Libero-EN](https://huggingface.co/datasets/physical-intelligence/libero) and [Libero-RU](https://huggingface.co/datasets/dunnolab/libero-ru) Datasets.
+- `pi05-pnp-ru` - pi05 checkpoint from Physical-Intelligence finetuned on the pick-and-place dataset for SO101 Robot with Russian task annotations.
 
 HF repository contains both model parameters and global normalization statistics which were used to train our models.
 
