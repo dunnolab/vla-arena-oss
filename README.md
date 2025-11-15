@@ -13,11 +13,12 @@
 git clone https://github.com/dunnolab/vla-arena-oss.git
 cd vla-arena-oss
 export VLA_ARENA_OSS_PWD=$(pwd)
+cd ../
 ```
 
 ### Clone Open-Pi from the official repository
 ```shell
-git clone --recurse-submodules https://github.comPhysical-Intelligence/openpi.git
+git clone --recurse-submodules https://github.com/Physical-Intelligence/openpi.git
 cd openpi
 git reset --hard 95aadc6b16d170e4b13ab2e0ac64fbf2d1bb8e31
 GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --recursive
