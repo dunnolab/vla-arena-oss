@@ -39,11 +39,8 @@ cp -r ./src/openpi/models_pytorch/transformers_replace/* .venv/lib/python3.11/si
 ## Using our models
 
 Choose `<model-name>` depending on your purposes:
-- `pi-0.5-lerobot-arc-eng` - pi-0.5 (pre-trained) checkpoint finetuned on English version of combined Le-Robot dataset
-- `pi-0.5-lerobot-arc-ru` - pi-0.5 (pre-trained) checkpoint finetuned on Russian version of combined Le-Robot dataset
-- `pi-0.5-scratch-arc-libero-eng` - pi-0.5 (from-scratch) checkpoint prtrained on English version of combined Le-Robot dataset and Finetuned on Libero Dataset from Physical-Intelligence (#TODO insert link)
-- `pi-0.5-scratch-arc-libero-ru` - pi-0.5 (from-scratch) checkpoint prtrained on Russian version of combined Le-Robot dataset and Finetuned on Libero-RU Dataset from (#TODO insert link)
-- `pi-0.5-scratch-libero-ru` - pi-0.5 (from-scratch) checkpoint on Libero-RU Dataset
+- `pi05-libero-ru-en` - pi05 checkpoint from Physical-Intelligence finetuned on both Libero-EN and [Libero-RU](TODO: insert link) Datasets.
+- `pi05-pnp-ru` - pi05 checkpoint from Physical-Intelligence finetuned on pick-and-place dataset for SO101 Robot with Russian task annotations.
 
 HF repository contains both model parameters and global normalization statistics which were used to train our models.
 
@@ -118,13 +115,15 @@ cp $VLA_ARENA_OSS_PWD/libero-ru/benchmark/__init__.py third_party/libero/libero/
 cp $VLA_ARENA_OSS_PWD/libero-ru/examples/main.py examples/libero/main.py
 ```
 
-Then you can follow the original setup of openpi LIBERO installation:
+Then you can follow the [original setup](https://github.com/Physical-Intelligence/openpi/tree/main/examples/libero#without-docker-not-recommended) of openpi LIBERO installation:
 ```shell
 ...
 # steps from the original openpi libero installation
 ...
 
+uv pip install -e packages/openpi-client
 uv pip install -e third_party/libero
+export PYTHONPATH=$PYTHONPATH:$PWD/third_party/libero
 ```
 
 Then, as an example, you can use such a script for LIBERO-RU/EN evaluation
