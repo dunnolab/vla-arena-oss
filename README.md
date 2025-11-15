@@ -55,11 +55,43 @@ curl -LsSf https://hf.co/cli/install.sh | bash
 
 ```shell
 # Download model from 
-hf download dunnolab/<model-name> 
-# 
+huggingface-cli download dunnolab/<model-name> --local-dir <your-local-dir> --local-dir-use-symlinks False
+# You will get parameters (either `params/` folder or `model.safetensors` file)
+# and `assets/` folder with normalization statistics 
+# that were used during training and inference
 ```
 
 ### Run finetuning
+Before you start a traininig, it is important to copy normalization statistics (supposing you write commands from original openpi directory)
+```sh
+cp <your-local-dir>/assets/norm_stats.json assets/<config_name>/<repo_id>/norm_stats.json
+# correct path example: assets/pi05_libero_ru/dunnolab/libero_ru/norm_stats.json
+```
+
+```sh
+# libero and arc training examples
+# pi05_arc pi05_arc_ru pi05_libero_ru pi0_libero_ru pi0_arc_ru pi0_arc
+
+
+uv run torchrun \
+  --standalone \
+  --nnodes=1 \
+  --nproc_per_node=8 \
+  scripts/train_pytorch.py pi05_libero_ru \
+  --project-name openpi-ru \
+  --exp-name pi05-libero-ru-experiment \
+  --num-train-steps 1000001 \
+  --save-interval 5000 \
+  --pytorch-weight-path /path/to/your/folder/with/pytorch/model
+
+
+# if you want to start training in jax from a specified checkpoint -
+# you should change a path in `weight_loader` of `TrainConfig`
+export XLA_PYTHON_CLIENT_MEM_FRACTION=0.9
+uv run scripts/train.py pi0_arc \
+  --exp-name=my_experiment \
+  --overwrite
+```
 
 ### Run evaluation on LIBERO RU/ENG
 We provide the following LIBERO-RU tasks:
@@ -72,7 +104,7 @@ If you're using LIBERO as a third-party dependency (e.g., in the OpenPI project)
 
 The bddl files define the task specifications and init files contain the initial environment states in Russian. python files configure benchmark suite for compatibility of original libero repo with Russian tasks. Copy them from your appropriate directory to your third-party LIBERO installation:
 
-```bash
+```shell
 cp -r $VLA_ARENA_OSS_PWD/libero-ru/bddl_files/ru_libero_* third_party/libero/libero/libero/bddl_files/
 
 cp -r $VLA_ARENA_OSS_PWD/libero-ru/init_files/ru_libero_* third_party/libero/libero/libero/init_files/
@@ -85,16 +117,16 @@ cp $VLA_ARENA_OSS_PWD/libero-ru/examples/main.py examples/libero/main.py
 ```
 
 Then you can follow the original setup of openpi LIBERO installation:
-```bash
+```shell
 ...
-'steps from the original openpi libero installation'
+# steps from the original openpi libero installation
 ...
 
 uv pip install -e third_party/libero
 ```
 
 Then, as an example, you can use such a script for LIBERO-RU/EN evaluation
-```bash
+```shells
 # ru_libero_spatial ru_libero_object ru_libero_goal ru_libero_10
 python examples/libero/main.py \
     --args.num_trials_per_task 50 \
