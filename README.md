@@ -34,6 +34,8 @@ cp $VLA_ARENA_OSS_PWD/openpi-patches/training/config.py src/openpi/training
 ```shell
 uv venv .venv && GIT_LFS_SKIP_SMUDGE=1 uv pip install -e . --python .venv/bin/python
 
+uv sync
+
 cp -r ./src/openpi/models_pytorch/transformers_replace/* .venv/lib/python3.11/site-packages/transformers/
 ```
 
@@ -62,7 +64,7 @@ huggingface-cli download dunnolab/<model-name> --local-dir <your-local-dir> --lo
 ### Run finetuning
 Before you start a traininig, it is important to copy normalization statistics (supposing you run commands from original openpi directory)
 ```sh
-cp <your-local-dir>/assets/norm_stats.json assets/<config_name>/<repo_id>/norm_stats.json
+cp <your-local-dir>/assets/norm_stats.json assets/<config_name>/<repo_id>/
 # correct path example: assets/pi05_libero_ru/dunnolab/libero_ru/norm_stats.json
 ```
 We provide the following configs for training:
