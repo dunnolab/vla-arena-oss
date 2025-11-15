@@ -62,17 +62,19 @@ huggingface-cli download dunnolab/<model-name> --local-dir <your-local-dir> --lo
 ```
 
 ### Run finetuning
-Before you start a traininig, it is important to copy normalization statistics (supposing you write commands from original openpi directory)
+Before you start a traininig, it is important to copy normalization statistics (supposing you run commands from original openpi directory)
 ```sh
 cp <your-local-dir>/assets/norm_stats.json assets/<config_name>/<repo_id>/norm_stats.json
 # correct path example: assets/pi05_libero_ru/dunnolab/libero_ru/norm_stats.json
 ```
-
+We provide the following configs for training:
+- `pi05_arc` - to train pi05 on `dunnolab/so-combined-eng`
+- `pi05_arc_ru` - to train pi05 on `dunnolab/so-combined-ru`
+- `pi05_libero_ru` - to train pi05 on `dunnolab/libero_ru`
+- `pi0_libero_ru` - to train pi0 on `dunnolab/libero_ru`
+- `pi0_arc_ru` - to train pi0 on `dunnolab/so-combined-ru`
+- `pi0_arc` - to train pi0 on `dunnolab/so-combined-ru`
 ```sh
-# libero and arc training examples
-# pi05_arc pi05_arc_ru pi05_libero_ru pi0_libero_ru pi0_arc_ru pi0_arc
-
-
 uv run torchrun \
   --standalone \
   --nnodes=1 \
@@ -102,7 +104,7 @@ We provide the following LIBERO-RU tasks:
 
 If you're using LIBERO as a third-party dependency (e.g., in the OpenPI project), you'll need to copy the Russian task files into your `third_party/libero` directory. Before that please refer to the installation instruction of the original [openpi repository](https://github.com/Physical-Intelligence/openpi/tree/main/examples/libero)
 
-The bddl files define the task specifications and init files contain the initial environment states in Russian. python files configure benchmark suite for compatibility of original libero repo with Russian tasks. Copy them from your appropriate directory to your third-party LIBERO installation:
+The `bddl` files define the task specifications and `init` files contain the initial environment states in Russian. python files configure benchmark suite for compatibility of original libero repo with Russian tasks. Copy them from your appropriate directory to your third-party LIBERO installation:
 
 ```shell
 cp -r $VLA_ARENA_OSS_PWD/libero-ru/bddl_files/ru_libero_* third_party/libero/libero/libero/bddl_files/
