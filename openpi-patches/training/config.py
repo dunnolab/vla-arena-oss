@@ -1014,7 +1014,7 @@ _CONFIGS = [
         name="pi05_arc_ru",
         model=pi0_config.Pi0Config(pi05=True, action_horizon=10, discrete_state_input=False),
         data=ArcDataConfig(
-            repo_id="dunno/merged",
+            repo_id="dunnolab/so-combined-ru",
             base_config=DataConfig(
                 prompt_from_task=True,
                 ),
@@ -1037,7 +1037,7 @@ _CONFIGS = [
         name="pi05_arc",
         model=pi0_config.Pi0Config(pi05=True, action_horizon=10, discrete_state_input=False),
         data=ArcDataConfig(
-            repo_id="dunno/merged",
+            repo_id="dunnolab/so-combined-eng",
             base_config=DataConfig(
                 prompt_from_task=True,
                 ),
@@ -1060,7 +1060,7 @@ _CONFIGS = [
         name="pi05_libero_ru",
         model=pi0_config.Pi0Config(pi05=True, action_horizon=10, discrete_state_input=False),
         data=LeRobotLiberoDataConfig(
-            repo_id="dunno/merged",
+            repo_id="dunnolab/libero_ru",
             base_config=DataConfig(
                 prompt_from_task=True,
             ),
@@ -1083,7 +1083,7 @@ _CONFIGS = [
         name="pi0_libero_ru",
         model=pi0_config.Pi0Config(),
         data=LeRobotLiberoDataConfig(
-            repo_id="dunno/merged",
+            repo_id="dunnolab/libero_ru",
             base_config=DataConfig(
                 prompt_from_task=True,
             ),
@@ -1096,7 +1096,7 @@ _CONFIGS = [
         name="pi0_arc_ru",
         model=pi0_config.Pi0Config(),
         data=ArcDataConfig(
-            repo_id="dunno/merged",
+            repo_id="dunnolab/so-combined-ru",
             base_config=DataConfig(
                 prompt_from_task=True,
             ),
@@ -1108,7 +1108,7 @@ _CONFIGS = [
         name="pi0_arc",
         model=pi0_config.Pi0Config(),
         data=ArcDataConfig(
-            repo_id="dunno/merged",
+            repo_id="dunnolab/so-combined-eng",
             base_config=DataConfig(
                 prompt_from_task=True,
             ),
