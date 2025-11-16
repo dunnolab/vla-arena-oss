@@ -78,6 +78,7 @@ We provide the following configs for training:
 - `pi0_libero_ru` - to train pi0 on `dunnolab/libero_ru`
 - `pi0_so_combined_ru` - to train pi0 on `dunnolab/so-combined-ru`
 - `pi0_so_combined_eng` - to train pi0 on `dunnolab/so-combined-eng`
+
 ```sh
 uv run torchrun \
   --standalone \
