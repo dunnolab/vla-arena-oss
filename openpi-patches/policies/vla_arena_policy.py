@@ -29,7 +29,7 @@ def _parse_image(image) -> np.ndarray:
 
 
 @dataclasses.dataclass(frozen=True)
-class ArcInputs(transforms.DataTransformFn):
+class VlaArenaInputs(transforms.DataTransformFn):
     """
     This class is used to convert inputs to the model to the expected format. It is used for both training and inference.
 
@@ -79,7 +79,7 @@ class ArcInputs(transforms.DataTransformFn):
 
 
 @dataclasses.dataclass(frozen=True)
-class ArcOutputs(transforms.DataTransformFn):
+class VlaArenaOutputs(transforms.DataTransformFn):
     """
     This class is used to convert outputs from the model back the the dataset specific format. It is
     used for inference only.

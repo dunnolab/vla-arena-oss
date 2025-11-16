@@ -30,7 +30,7 @@ GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --recursive
 
 ### Patch policy and config files
 ```shell
-cp $VLA_ARENA_OSS_PWD/openpi-patches/policies/arc_policy.py src/openpi/policies/
+cp $VLA_ARENA_OSS_PWD/openpi-patches/policies/vla_arena_policy.py src/openpi/policies/
 cp $VLA_ARENA_OSS_PWD/openpi-patches/training/config.py src/openpi/training
 ```
 
@@ -72,12 +72,12 @@ cp <your-local-dir>/assets/norm_stats.json assets/<config_name>/<repo_id>/
 # correct path example: assets/pi05_libero_ru/dunnolab/libero_ru/norm_stats.json
 ```
 We provide the following configs for training:
-- `pi05_arc` - to train pi05 on `dunnolab/so-combined-eng`
-- `pi05_arc_ru` - to train pi05 on `dunnolab/so-combined-ru`
+- `pi05_so_combined_eng` - to train pi05 on `dunnolab/so-combined-eng`
+- `pi05_so_combined_ru` - to train pi05 on `dunnolab/so-combined-ru`
 - `pi05_libero_ru` - to train pi05 on `dunnolab/libero_ru`
 - `pi0_libero_ru` - to train pi0 on `dunnolab/libero_ru`
-- `pi0_arc_ru` - to train pi0 on `dunnolab/so-combined-ru`
-- `pi0_arc` - to train pi0 on `dunnolab/so-combined-ru`
+- `pi0_so_combined_ru` - to train pi0 on `dunnolab/so-combined-ru`
+- `pi0_so_combined_eng` - to train pi0 on `dunnolab/so-combined-eng`
 ```sh
 uv run torchrun \
   --standalone \
@@ -94,7 +94,7 @@ uv run torchrun \
 # if you want to start training in jax from a specified checkpoint -
 # you should change a path in `weight_loader` of `TrainConfig`
 export XLA_PYTHON_CLIENT_MEM_FRACTION=0.9
-uv run scripts/train.py pi0_arc \
+uv run scripts/train.py pi0_so_combined_eng \
   --exp-name=my_experiment \
   --overwrite
 ```

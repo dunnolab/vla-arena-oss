@@ -28,7 +28,7 @@ import openpi.training.optimizer as _optimizer
 import openpi.training.weight_loaders as weight_loaders
 import openpi.transforms as _transforms
 
-import openpi.policies.arc_policy as arc_policy
+import openpi.policies.vla_arena_policy as vla_arena_policy
 
 ModelType: TypeAlias = _model.ModelType
 # Work around a tyro issue with using nnx.filterlib.Filter directly.
@@ -280,7 +280,7 @@ class LeRobotAlohaDataConfig(DataConfigFactory):
 
 
 @dataclasses.dataclass(frozen=True)
-class ArcDataConfig(DataConfigFactory):
+class VlaArenaDataConfig(DataConfigFactory):
     repack_transforms: tyro.conf.Suppress[_transforms.Group] = dataclasses.field(
         default=_transforms.Group(
             inputs=[
@@ -304,8 +304,8 @@ class ArcDataConfig(DataConfigFactory):
     @override
     def create(self, assets_dirs: pathlib.Path, model_config: _model.BaseModelConfig) -> DataConfig:
         data_transforms = _transforms.Group(
-            inputs=[arc_policy.ArcInputs(model_type=model_config.model_type)],
-            outputs=[arc_policy.ArcOutputs()],
+            inputs=[vla_arena_policy.VlaArenaInputs(model_type=model_config.model_type)],
+            outputs=[vla_arena_policy.VlaArenaOutputs()],
         )
 
         if self.extra_delta_transform:
@@ -1011,9 +1011,9 @@ _CONFIGS = [
     #
     *roboarena_config.get_roboarena_configs(),
     TrainConfig(
-        name="pi05_arc_ru",
+        name="pi05_so_combined_ru",
         model=pi0_config.Pi0Config(pi05=True, action_horizon=10, discrete_state_input=False),
-        data=ArcDataConfig(
+        data=VlaArenaDataConfig(
             repo_id="dunnolab/so-combined-ru",
             base_config=DataConfig(
                 prompt_from_task=True,
@@ -1034,9 +1034,9 @@ _CONFIGS = [
         num_train_steps=30_000,
     ),
     TrainConfig(
-        name="pi05_arc",
+        name="pi05_so_combined_eng",
         model=pi0_config.Pi0Config(pi05=True, action_horizon=10, discrete_state_input=False),
-        data=ArcDataConfig(
+        data=VlaArenaDataConfig(
             repo_id="dunnolab/so-combined-eng",
             base_config=DataConfig(
                 prompt_from_task=True,
@@ -1093,9 +1093,9 @@ _CONFIGS = [
         num_train_steps=30_000,
     ),
     TrainConfig(
-        name="pi0_arc_ru",
+        name="pi0_so_combined_ru",
         model=pi0_config.Pi0Config(),
-        data=ArcDataConfig(
+        data=VlaArenaDataConfig(
             repo_id="dunnolab/so-combined-ru",
             base_config=DataConfig(
                 prompt_from_task=True,
@@ -1105,9 +1105,9 @@ _CONFIGS = [
         num_train_steps=50_000,
     ),
     TrainConfig(
-        name="pi0_arc",
+        name="pi0_so_combined_eng",
         model=pi0_config.Pi0Config(),
-        data=ArcDataConfig(
+        data=VlaArenaDataConfig(
             repo_id="dunnolab/so-combined-eng",
             base_config=DataConfig(
                 prompt_from_task=True,
