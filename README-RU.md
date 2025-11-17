@@ -11,7 +11,7 @@
 
 ### Датасет Libero-RU
 
-Также, доступна переведенная на руский язык [версия](https://huggingface.co/datasets/dunnolab/libero-ru) датасета [Libero](https://huggingface.co/datasets/physical-intelligence/libero) от Physical Intelligence.
+Также, доступна переведенная на руский язык [версия](https://huggingface.co/datasets/dunnolab/libero-ru) датасета [Libero](https://huggingface.co/datasets/physical-intelligence/libero).
 
 
 ## Настройка обучения на датасетах Le-Robot

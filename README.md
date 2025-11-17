@@ -11,7 +11,7 @@ We present a consolidated community dataset for Le-Robot embodiment that integra
 
 ### Libero-RU Dataset
 
-We also open-source a translated to Russian language [version](https://huggingface.co/datasets/dunnolab/libero-ru) of Physical Intelligence Libero [dataset](https://huggingface.co/datasets/physical-intelligence/libero).
+We also open-source a translated to Russian language [version](https://huggingface.co/datasets/dunnolab/libero-ru) of Libero [dataset](https://huggingface.co/datasets/physical-intelligence/libero).
 
 ## Setup Training On Le-Robot Datasets
 ### Clone this repository
