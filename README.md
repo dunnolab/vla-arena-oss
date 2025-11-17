@@ -1,5 +1,8 @@
 # Tools for RU-VLA
 
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/dunnolab/vla-arena-oss/blob/main/README.md)
+[![ru](https://img.shields.io/badge/lang-ru-green.svg)](https://github.com/dunnolab/vla-arena-oss/blob/main/README.ru.md)
+
 ## Avalilable Datasets 
 
 ### Combined Le-Robot Datasets
@@ -109,7 +112,7 @@ We provide the following LIBERO-RU tasks:
 
 If you're using LIBERO as a third-party dependency (e.g., in the OpenPI project), you'll need to copy the Russian task files into your `third_party/libero` directory. Before that please refer to the installation instruction of the original [openpi repository](https://github.com/Physical-Intelligence/openpi/tree/main/examples/libero)
 
-The `bddl` files define the task specifications and `init` files contain the initial environment states in Russian. python files configure benchmark suite for compatibility of original libero repo with Russian tasks. Copy them from your appropriate directory to your third-party LIBERO installation:
+The `bddl` files define the task specifications and `init` files contain the initial environment states in Russian. python files configure benchmark suite for compatibility of original libero repo with Russian tasks. Copy those files from your appropriate directory to your third-party LIBERO installation:
 
 ```shell
 cp -r $VLA_ARENA_OSS_PWD/libero-ru/bddl_files/ru_libero_* third_party/libero/libero/libero/bddl_files/
