@@ -1,7 +1,7 @@
 # Tools for RU-VLA
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/dunnolab/vla-arena-oss/blob/main/README.md)
-[![ru](https://img.shields.io/badge/lang-ru-green.svg)](https://github.com/dunnolab/vla-arena-oss/blob/main/README.ru.md)
+[![ru](https://img.shields.io/badge/lang-ru-green.svg)](https://github.com/dunnolab/vla-arena-oss/blob/main/README-RU.md)
 
 ## Avalilable Datasets 
 
